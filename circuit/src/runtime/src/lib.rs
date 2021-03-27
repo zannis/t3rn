@@ -67,6 +67,7 @@ pub use pallet_bridge_grandpa::Call as FinalityBridgeWestendCall;
 pub use pallet_substrate_bridge::Call as BridgeRialtoCall;
 pub use pallet_sudo::Call as SudoCall;
 pub use pallet_timestamp::Call as TimestampCall;
+pub use pallet_test::Call as TestCall;
 
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
@@ -375,12 +376,17 @@ impl pallet_bridge_messages::Config for Runtime {
 	type MessageDispatch = crate::rialto_messages::FromRialtoMessageDispatch;
 }
 
+impl pallet_test::Config for Runtime {
+	type Event = Event;
+}
+
 construct_runtime!(
 	pub enum Runtime where
 		Block = Block,
 		NodeBlock = opaque::Block,
 		UncheckedExtrinsic = UncheckedExtrinsic
 	{
+		TestModule: pallet_test::{Module, Call, Storage, Event<T>},
 		BridgeRialto: pallet_substrate_bridge::{Module, Call, Storage, Config<T>},
 		BridgeRialtoMessages: pallet_bridge_messages::{Module, Call, Storage, Event<T>},
 		BridgeCallDispatch: pallet_bridge_dispatch::{Module, Event<T>},

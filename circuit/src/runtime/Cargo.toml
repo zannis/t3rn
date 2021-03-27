@@ -42,7 +42,7 @@ pallet-multi-finality-verifier = { git = "https://github.com/MaciejBaj/parity-br
 pallet-bridge-messages = { git = "https://github.com/MaciejBaj/parity-bridges-common", branch = "development" , default-features = false }
 pallet-shift-session-manager = { git = "https://github.com/MaciejBaj/parity-bridges-common", branch = "development" , default-features = false }
 pallet-substrate-bridge = { git = "https://github.com/MaciejBaj/parity-bridges-common", branch = "development" , default-features = false }
-
+pallet-test = { path = "../pallet-test/", default-features = false }
 # Substrate Dependencies
 
 frame-executive = { git = "https://github.com/paritytech/substrate", branch = "master" , default-features = false }
@@ -102,6 +102,7 @@ std = [
 	"pallet-session/std",
 	"pallet-substrate-bridge/std",
 	"pallet-sudo/std",
+	"pallet-test/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
